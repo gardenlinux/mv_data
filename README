@@ -1,0 +1,16 @@
+Usage: mv_data [OPTION...]
+Move data from an input file to an output file.
+
+Reads a specified number of bytes from the input file at a given offset and
+writes them to the output file at a specified offset. After writing each chunk
+of data, the storage space in the input file is immediately freed using
+fallocate with FALLOC_FL_PUNCH_HOLE. This allows for moving large sections of
+data without requiring significant storage overhead.
+
+      --input=FILE           input file name (required)
+      --input-offset=OFFSET  input offset in bytes (default: 0)
+      --output=FILE          output file name (required)
+      --output-offset=OFFSET output offset in bytes (default: 0)
+      --length=LENGTH        length in bytes (default: input file size)
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
